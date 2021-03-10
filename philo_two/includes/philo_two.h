@@ -6,7 +6,7 @@
 /*   By: skang <skang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 23:41:52 by skang             #+#    #+#             */
-/*   Updated: 2021/03/10 23:41:54 by skang            ###   ########.fr       */
+/*   Updated: 2021/03/11 00:23:44 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,27 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include "utils.h"
-
 # define ALIVE 0
 # define DIED 1
 # define FULL 2
-# define WRITABLE 1
-# define FOR_PHILOS_ORDERING 20
 
-typedef struct	s_semaphore
+typedef struct			s_semaphore
 {
-	sem_t	*s_forks;
-	sem_t	*s_write;
-	sem_t	*s_meal;
-}					t_sem;
+	sem_t				*s_forks;
+	sem_t				*s_write;
+	sem_t				*s_meal;
+}						t_sem;
 
-typedef struct		s_philo_data
+typedef struct			s_philo_data
 {
-	int		num_of_philo;
-	long	time_to_die;
-	long	time_to_eat;
-	long	time_to_sleep;
-	int		num_of_must_eat;
-	int		state;
-	long	num_of_meals;
-}					t_pd;
+	int					num_of_philo;
+	long				time_to_die;
+	long				time_to_eat;
+	long				time_to_sleep;
+	int					num_of_must_eat;
+	int					state;
+	long				num_of_meals;
+}						t_pd;
 
 typedef struct			s_philo
 {
@@ -56,33 +53,15 @@ typedef struct			s_philo
 	long				program_start;
 }						t_philo;
 
-/*
-**						input_args.c
-*/
 int						input_args(t_pd *pd, const char **argv);
-/*
-**						init.c
-*/
 t_philo					*init_threads(t_pd *pd, t_sem *sems);
 int						init_sems(t_sem *sems, t_pd *pd);
-/*
-**						finish_threads.c
-*/
-void				finish_semaphores(t_philo *ph, t_sem *sems);
+void					finish_semaphores(t_philo *ph, t_sem *sems);
+void					grab_fork(t_philo *ph);
+void					eating(t_philo *tmp_ph);
+void					*is_die(void *tmp_ph);
+void					*is_full(void *tmp_ph);
+long					get_time(void);
+int						messages(const char *str, t_philo *ph);
 
-/*
-**					doing.c
-*/
-void				grab_fork(t_philo *ph);
-void				eating(t_philo *tmp_ph);
-/*
-**							monitoring.c
-*/
-void				*is_die(void *tmp_ph);
-void				*is_full(void *tmp_ph);
-/*
-**					main.c
-*/
-long				get_time(void);
-int					messages(const char *str, t_philo *ph);
 #endif

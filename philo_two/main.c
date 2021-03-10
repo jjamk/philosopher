@@ -6,7 +6,7 @@
 /*   By: skang <skang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 23:39:19 by skang             #+#    #+#             */
-/*   Updated: 2021/03/10 23:39:22 by skang            ###   ########.fr       */
+/*   Updated: 2021/03/11 00:25:17 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	*print_do(void *tmp_ph)
 	return (NULL);
 }
 
-void		finish_semaphores(t_philo *ph, t_sem *sems)
+void	finish_semaphores(t_philo *ph, t_sem *sems)
 {
 	sem_unlink("forks");
 	sem_unlink("write");

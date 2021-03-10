@@ -6,7 +6,7 @@
 /*   By: skang <skang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 23:42:35 by skang             #+#    #+#             */
-/*   Updated: 2021/03/10 23:42:38 by skang            ###   ########.fr       */
+/*   Updated: 2021/03/11 00:24:49 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void	ft_putstr(const char *str)
 	int len;
 
 	len = ft_strlen(str);
-	write(1, str, len);	
+	write(1, str, len);
 }
